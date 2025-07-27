@@ -1,0 +1,22 @@
+{
+  "short_name": "Vegy",
+  "name": "Vegy Online Ordering",
+  "icons": [
+    {
+      "src": "https://raw.githubusercontent.com/patx/invos-screenshots/refs/heads/main/icon%20192.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "https://raw.githubusercontent.com/patx/invos-screenshots/refs/heads/main/icon512.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ],
+  "categories": ["productivity"],
+  "start_url": "https://demo.vegy.app/",
+  "display": "standalone",
+  "orientation": "portrait-primary",
+  "theme_color": "#f8f9fa",
+  "background_color": "#f8f9fa"
+}
