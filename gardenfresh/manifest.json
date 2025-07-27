@@ -1,0 +1,22 @@
+{
+  "short_name": "Garden Fresh",
+  "name": "Garden Fresh Online Ordering",
+  "icons": [
+    {
+      "src": "https://raw.githubusercontent.com/patx/vegy-static/refs/heads/main/gardenfresh/icon192.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "https://raw.githubusercontent.com/patx/vegy-static/refs/heads/main/gardenfresh/icon512.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ],
+  "categories": ["productivity"],
+  "start_url": "https://gardenfresh.vegy.app/",
+  "display": "standalone",
+  "orientation": "portrait-primary",
+  "theme_color": "#f8f9fa",
+  "background_color": "#f8f9fa"
+}
