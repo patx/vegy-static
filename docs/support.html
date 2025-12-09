@@ -21,7 +21,7 @@
   <!-- Nav -->
   <nav class="fixed top-0 inset-x-0 bg-[--vegy-dark]/90 backdrop-blur-sm z-10">
     <div class="max-w-6xl mx-auto px-4 py-4 flex items-center justify-between">
-      <a href="/" class="text-2xl font-extrabold text-[--vegy-primary]">Vegy</a>
+      <a href="https://vegy.app/" class="text-2xl font-extrabold text-[--vegy-primary]">Vegy</a>
       <a href="https://calendly.com/hello-vegy/demo" target="_blank" class="px-4 py-2 bg-[--vegy-primary] rounded-lg hover:opacity-90">Book a Demo</a>
     </div>
   </nav>
@@ -65,9 +65,12 @@
   <!-- Footer -->
   <footer class="py-6 bg-[--vegy-dark] text-gray-400 text-center">
     <div class="max-w-6xl mx-auto px-4">
-      <p>© <span id="year"></span> <a href="/" class="text-[--vegy-primary] hover:underline">Vegy</a> • <a href="/legal" class="text-[--vegy-primary] hover:underline">Terms & Privacy</a> • <a href="/support" class="text-[--vegy-primary] hover:underline">Contact</a></p>
+      <p>© <span id="year"></span> <a href="https://vegy.app/" class="text-[--vegy-primary] hover:underline">Vegy</a> • <a href="https://vegy.app/legal.html" class="text-[--vegy-primary] hover:underline">Terms & Privacy</a> • <a href="https://vegy.app/support.html" class="text-[--vegy-primary] hover:underline">Contact</a></p>
     </div>
   </footer>
-
+  
+  <script>
+    document.getElementById('year').textContent = new Date().getFullYear();
+  </script>
 </body>
 </html>
