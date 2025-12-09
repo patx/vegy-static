@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Vegy — Simplify Wholesale Ordering</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;800&display=swap" rel="stylesheet" />
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    :root {
+      --vegy-primary: #14b8a6;
+      --vegy-dark: #0f172a;
+    }
+    body { font-family: 'Poppins', system-ui, sans-serif; scroll-behavior: smooth; }
+    .hero-bg { background: linear-gradient(180deg, #0f172a 0%, #1e293b 100%); }
+    .animate-fade-up { animation: fadeUp .6s ease-out both; }
+    @keyframes fadeUp { from { opacity: 0; transform: translateY(16px); } to { opacity: 1; transform: translateY(0); } }
+  </style>
+</head>
+<body class="bg-[--vegy-dark] text-white">
+  <!-- Nav -->
+  <nav class="fixed top-0 inset-x-0 bg-[--vegy-dark]/90 backdrop-blur-sm z-10">
+    <div class="max-w-6xl mx-auto px-4 py-4 flex items-center justify-between">
+      <a href="/" class="text-2xl font-extrabold text-[--vegy-primary]">Vegy</a>
+      <a href="https://calendly.com/hello-vegy/demo" target="_blank" class="px-4 py-2 bg-[--vegy-primary] rounded-lg hover:opacity-90">Book a Demo</a>
+    </div>
+  </nav>
+
+  <!-- Hero -->
+  <section class="hero-bg min-h-screen flex items-center justify-center py-24">
+    <div class="max-w-6xl mx-auto px-4 text-center space-y-8">
+      <h1 class="text-4xl md:text-6xl font-extrabold leading-tight animate-fade-up">Your Wholesale Ordering App</h1>
+
+      <div class="mx-auto max-w-md animate-fade-up" style="animation-delay:.2s">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 406 852" class="w-full h-auto">
+          <image href="https://raw.githubusercontent.com/patx/vegy-static/refs/heads/main/screenshots/order.png" x="-43" y="25" width="500" height="800" preserveAspectRatio="xMidYMid meet"></image>
+          <image href="https://ordertaker.us/wp-content/plugins/bdthemes-element-pack/assets/images/devices/iphonex.svg" x="0" y="0" width="415" height="852" />
+        </svg>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-3 text-left max-w-3xl mx-auto animate-fade-up" style="animation-delay:.3s">
+        <div class="flex items-start gap-2"><span class="text-[--vegy-primary] text-xl">✓</span><p class="text-gray-300">Invite businesses, chefs, restaurants, retailers, dealers & buyers to your own branded online catalog</p></div>
+        <div class="flex items-start gap-2"><span class="text-[--vegy-primary] text-xl">✓</span><p class="text-gray-300">Catalog ordering via white‑label website, mobile web app, iOS/Android app, or text message powered by AI</p></div>
+        <div class="flex items-start gap-2"><span class="text-[--vegy-primary] text-xl">✓</span><p class="text-gray-300">Works for produce, fish, meat, cash & carry, building products, manufacturing & more</p></div>
+        <div class="flex items-start gap-2"><span class="text-[--vegy-primary] text-xl">✓</span><p class="text-gray-300">Custom markup tiers for customer specific pricing to maximize profit</p></div>
+        <div class="flex items-start gap-2"><span class="text-[--vegy-primary] text-xl">✓</span><p class="text-gray-300">Connects with QuickBooks for invoices, payments, inventory & delivery tracking</p></div>
+        <div class="flex items-start gap-2"><span class="text-[--vegy-primary] text-xl">✓</span><p class="text-gray-300">Promote featured items to boost order size & alert customers to new products</p></div>
+        <div class="flex items-start gap-2"><span class="text-[--vegy-primary] text-xl">✓</span><p class="text-gray-300">Download order reports such as pull slips, daily sales, price lists, orders & more</p></div>
+        <div class="flex items-start gap-2"><span class="text-[--vegy-primary] text-xl">✓</span><p class="text-gray-300">Custom integrations, domains & more available to fit any of your needs</p></div>
+      </div>
+
+      <div class="animate-fade-up" style="animation-delay:.4s">
+        <a href="https://calendly.com/hello-vegy/demo" style="font-size:x-large;" target="_blank" class="px-6 py-3 bg-[--vegy-primary] rounded-lg hover:opacity-90">Book your live demo now</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="py-6 bg-[--vegy-dark] text-gray-400 text-center">
+    <div class="max-w-6xl mx-auto px-4">
+      <p>© <span id="year"></span> <a href="/" class="text-[--vegy-primary] hover:underline">Vegy</a> • <a href="/legal" class="text-[--vegy-primary] hover:underline">Terms & Privacy</a> • <a href="/support" class="text-[--vegy-primary] hover:underline">Contact</a></p>
+    </div>
+  </footer>
+
+  <script>
+    document.getElementById('year').textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>
+
