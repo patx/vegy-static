@@ -6,82 +6,167 @@
   <title>Vegy — Account Support</title>
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;800&display=swap" rel="stylesheet" />
   <script src="https://cdn.tailwindcss.com"></script>
+
   <style>
-    :root {
-      --vegy-primary: #14b8a6;
-      --vegy-dark: #0f172a;
+    :root{
+      /* keep Vegy teal but make it “grown up” */
+      --vegy-primary:#0f766e;       /* teal-700 */
+      --vegy-primary-dark:#115e59;  /* teal-800 */
+
+      /* light, professional base */
+      --bg:#f8fafc;         /* slate-50 */
+      --text:#0f172a;       /* slate-900 */
+      --muted:#64748b;      /* slate-500 */
+      --card:#ffffff;
+      --border:rgba(15,23,42,.08);
+      --shadow:0 18px 60px rgba(15,23,42,.10);
     }
-    body { font-family: 'Poppins', system-ui, sans-serif; scroll-behavior: smooth; }
-    .hero-bg { background: linear-gradient(180deg, #0f172a 0%, #1e293b 100%); }
+
+    html, body { height: 100%; }
+    body {
+      font-family: "Poppins", system-ui, -apple-system, Segoe UI, Roboto, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      scroll-behavior: smooth;
+      overflow-x: hidden;
+    }
+
+    /* soft highlights (no gradients) */
+    .blob {
+      position: absolute;
+      width: 720px;
+      height: 720px;
+      border-radius: 9999px;
+      filter: blur(110px);
+      opacity: .14;
+      background: rgba(15,118,110,.28);
+      pointer-events: none;
+      transform: translateZ(0);
+    }
+    .blob.b2{
+      width: 600px;
+      height: 600px;
+      opacity: .10;
+      background: rgba(2,132,199,.20);
+    }
+
+    /* glassy header */
+    .glass {
+      background: rgba(255,255,255,.78);
+      backdrop-filter: blur(18px) saturate(160%);
+      -webkit-backdrop-filter: blur(18px) saturate(160%);
+      box-shadow: var(--shadow);
+      border: 1px solid var(--border);
+    }
+
     .animate-fade-up { animation: fadeUp .6s ease-out both; }
     @keyframes fadeUp { from { opacity: 0; transform: translateY(16px); } to { opacity: 1; transform: translateY(0); } }
+
+    a:focus-visible, button:focus-visible {
+      outline: 2px solid rgba(15,118,110,.9);
+      outline-offset: 3px;
+      border-radius: 14px;
+    }
   </style>
 </head>
-<body class="bg-[--vegy-dark] text-white">
-  <!-- Nav -->
-  <nav class="fixed top-0 inset-x-0 bg-[--vegy-dark]/90 backdrop-blur-sm z-10">
-    <div class="max-w-6xl mx-auto px-4 py-4 flex items-center justify-between">
-      <a href="https://vegy.app/" class="text-2xl font-extrabold text-[--vegy-primary]">Vegy</a>
-      <a href="https://calendly.com/hello-vegy/demo" target="_blank" class="px-4 py-2 bg-[--vegy-primary] rounded-lg hover:opacity-90">Book a Demo</a>
+
+<body>
+  <!-- subtle highlights -->
+  <div class="blob" style="top:-300px; left:-260px;"></div>
+  <div class="blob b2" style="top:-280px; right:-260px;"></div>
+
+  <!-- Nav (light, matches white homepage) -->
+  <nav class="fixed top-0 inset-x-0 z-20">
+    <div class="max-w-6xl mx-auto px-4 pt-4">
+      <div class="glass rounded-2xl px-4 md:px-6 py-3 flex items-center justify-between">
+        <a href="https://vegy.app/" class="text-2xl font-extrabold tracking-tight" style="color:var(--vegy-primary)">
+          Vegy
+        </a>
+
+        <a href="https://calendly.com/hello-vegy/demo" target="_blank"
+           class="px-4 py-2 rounded-xl text-white font-semibold transition"
+           style="background:var(--vegy-primary)"
+           onmouseover="this.style.background='var(--vegy-primary-dark)'"
+           onmouseout="this.style.background='var(--vegy-primary)'">
+          Book a Demo
+        </a>
+      </div>
     </div>
   </nav>
 
   <!-- Support Content -->
-  <section class="hero-bg py-24" style="margin-top: 80px;">
-    <div class="max-w-6xl mx-auto px-4 text-center space-y-8">
-      <h1 class="text-4xl md:text-6xl font-extrabold leading-tight animate-fade-up">Support Center</h1>
-      <p class="text-gray-300 max-w-2xl mx-auto animate-fade-up" style="animation-delay: .2s">Get help with your Vegy account, from login issues to billing and client management. We're here for you!</p>
+  <main class="pt-28 pb-16 relative z-10">
+    <section class="max-w-6xl mx-auto px-4">
+      <div class="text-center space-y-4">
+        <h1 class="text-4xl md:text-6xl font-extrabold leading-tight animate-fade-up">
+          Support Center
+        </h1>
+        <p class="max-w-2xl mx-auto text-lg md:text-xl animate-fade-up" style="animation-delay:.1s; color:var(--muted)">
+          Get help with your Vegy account, from login issues to billing and client management. We’re here for you.
+        </p>
+      </div>
 
-        <div class="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-4xl mx-auto animate-fade-up" style="animation-delay: .3s">
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-4xl mx-auto mt-10 animate-fade-up" style="animation-delay:.2s">
 
-          <!-- Email Support -->
-          <div class="bg-[--vegy-dark]/50 border border-white/10 rounded-lg p-6 hover:-translate-y-1 transition-transform text-left">
-            <div class="flex items-center gap-2 mb-3">
-              <span class="text-[--vegy-primary] text-xl">✓</span>
-              <h3 class="text-xl font-semibold text-[--vegy-primary]">Email Support</h3>
-            </div>
-
-            <p class="text-gray-300 mb-4">Need help with an account, login issue, or anything else? Reach out and we'll reply quickly.</p>
-
-            <ul class="text-gray-300 space-y-2">
-              <li><strong>Email:</strong> hello@vegy.app</li>
-              <li>
-                <strong>Support Topics:</strong>  
-                General help, account updates, help placing orders, client management, login & technical help, payments and billing
-              </li>
-            </ul>
+        <!-- Email Support -->
+        <div class="bg-white border rounded-2xl p-6 hover:-translate-y-1 transition-transform"
+             style="border-color:var(--border); box-shadow: 0 12px 40px rgba(15,23,42,.08);">
+          <div class="flex items-center gap-2 mb-3">
+            <span class="text-xl" style="color:var(--vegy-primary)">✓</span>
+            <h3 class="text-xl font-semibold" style="color:var(--vegy-primary)">Email Support</h3>
           </div>
 
-          <!-- Phone Support -->
-          <div class="bg-[--vegy-dark]/50 border border-white/10 rounded-lg p-6 hover:-translate-y-1 transition-transform text-left">
-            <div class="flex items-center gap-2 mb-3">
-              <span class="text-[--vegy-primary] text-xl">✓</span>
-              <h3 class="text-xl font-semibold text-[--vegy-primary]">Phone Support</h3>
-            </div>
+          <p class="mb-4" style="color:var(--muted)">
+            Need help with an account, login issue, or anything else? Reach out and we’ll reply quickly.
+          </p>
 
-            <p class="text-gray-300 mb-4">Want to speak to someone directly? Our support line is open 5 days a week and you can even text us after hours.</p>
-
-            <ul class="text-gray-300 space-y-2">
-              <li><strong>Phone:</strong> (954) 953-1901</li>
-              <li><strong>Hours:</strong> 11am – 4pm EST, Monday–Friday</li>
-              <li>
-                <strong>Support Topics:</strong>  
-                For instance owners only — account updates, client management, payments and billing, custom ERP integrations
-              </li>
-            </ul>
-          </div>
-
+          <ul class="space-y-2" style="color:var(--muted)">
+            <li><strong class="text-slate-900">Email:</strong> hello@vegy.app</li>
+            <li>
+              <strong class="text-slate-900">Support Topics:</strong>
+              General help, account updates, help placing orders, client management, login & technical help, payments and billing
+            </li>
+          </ul>
         </div>
 
-  </section>
+        <!-- Phone Support -->
+        <div class="bg-white border rounded-2xl p-6 hover:-translate-y-1 transition-transform"
+             style="border-color:var(--border); box-shadow: 0 12px 40px rgba(15,23,42,.08);">
+          <div class="flex items-center gap-2 mb-3">
+            <span class="text-xl" style="color:var(--vegy-primary)">✓</span>
+            <h3 class="text-xl font-semibold" style="color:var(--vegy-primary)">Phone Support</h3>
+          </div>
 
-  <!-- Footer -->
-  <footer class="py-6 bg-[--vegy-dark] text-gray-400 text-center">
+          <p class="mb-4" style="color:var(--muted)">
+            Want to speak to someone directly? Our support line is open 5 days a week and you can even text us after hours.
+          </p>
+
+          <ul class="space-y-2" style="color:var(--muted)">
+            <li><strong class="text-slate-900">Phone:</strong> (954) 953-1901</li>
+            <li><strong class="text-slate-900">Hours:</strong> 11am – 4pm EST, Monday–Friday</li>
+            <li>
+              <strong class="text-slate-900">Support Topics:</strong>
+              For instance owners only — account updates, client management, payments and billing, custom ERP integrations
+            </li>
+          </ul>
+        </div>
+
+      </div>
+    </section>
+  </main>
+
+  <!-- Footer (light, matches white homepage) -->
+  <footer class="py-8 relative z-10">
     <div class="max-w-6xl mx-auto px-4">
-      <p>© <span id="year"></span> <a href="https://vegy.app/" class="text-[--vegy-primary] hover:underline">Vegy</a> • <a href="https://vegy.app/legal.html" class="text-[--vegy-primary] hover:underline">Terms & Privacy</a> • <a href="https://vegy.app/support.html" class="text-[--vegy-primary] hover:underline">Contact</a></p>
+      <div class="text-center text-sm" style="color:var(--muted)">
+        © <span id="year"></span>
+        <a href="https://vegy.app/" class="hover:underline" style="color:var(--vegy-primary)">Vegy</a>
+        • <a href="https://vegy.app/legal.html" class="hover:underline">Terms & Privacy</a>
+        • <a href="https://vegy.app/support.html" class="hover:underline">Contact</a>
+      </div>
     </div>
   </footer>
-  
+
   <script>
     document.getElementById('year').textContent = new Date().getFullYear();
   </script>
