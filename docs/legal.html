@@ -7,131 +7,237 @@
   <meta name="description" content="Review Vegy's Terms of Use and Privacy Policy for our wholesale ordering platform, including roles, billing, data collection, and more.">
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;800&display=swap" rel="stylesheet" />
   <script src="https://cdn.tailwindcss.com"></script>
+
   <style>
-    :root {
-      --vegy-primary: #14b8a6;
-      --vegy-dark: #0f172a;
+    :root{
+      /* keep Vegy teal but make it “grown up” */
+      --vegy-primary:#0f766e;       /* teal-700 */
+      --vegy-primary-dark:#115e59;  /* teal-800 */
+
+      /* light, professional base */
+      --bg:#f8fafc;         /* slate-50 */
+      --text:#0f172a;       /* slate-900 */
+      --muted:#64748b;      /* slate-500 */
+      --card:#ffffff;
+      --border:rgba(15,23,42,.08);
+      --shadow:0 18px 60px rgba(15,23,42,.10);
     }
-    body { font-family: 'Poppins', system-ui, sans-serif; scroll-behavior: smooth; }
-    .hero-bg { background: linear-gradient(180deg, #0f172a 0%, #1e293b 100%); }
+
+    html, body { height: 100%; }
+    body {
+      font-family: "Poppins", system-ui, -apple-system, Segoe UI, Roboto, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      scroll-behavior: smooth;
+      overflow-x: hidden;
+    }
+
+    /* soft highlights (no gradients) */
+    .blob {
+      position: absolute;
+      width: 720px;
+      height: 720px;
+      border-radius: 9999px;
+      filter: blur(110px);
+      opacity: .14;
+      background: rgba(15,118,110,.28);
+      pointer-events: none;
+      transform: translateZ(0);
+    }
+    .blob.b2{
+      width: 600px;
+      height: 600px;
+      opacity: .10;
+      background: rgba(2,132,199,.20);
+    }
+
+    /* glassy header */
+    .glass {
+      background: rgba(255,255,255,.78);
+      backdrop-filter: blur(18px) saturate(160%);
+      -webkit-backdrop-filter: blur(18px) saturate(160%);
+      box-shadow: var(--shadow);
+      border: 1px solid var(--border);
+    }
+
     .animate-fade-up { animation: fadeUp .6s ease-out both; }
     @keyframes fadeUp { from { opacity: 0; transform: translateY(16px); } to { opacity: 1; transform: translateY(0); } }
+
+    a:focus-visible, button:focus-visible {
+      outline: 2px solid rgba(15,118,110,.9);
+      outline-offset: 3px;
+      border-radius: 14px;
+    }
+
+    /* legal typography tweaks */
+    .prose p, .prose li { line-height: 1.75; }
+    .prose code { background: rgba(15,23,42,.06); padding: .12rem .35rem; border-radius: .5rem; }
   </style>
 </head>
-<body class="bg-[--vegy-dark] text-white">
-  <!-- Nav -->
-  <nav class="fixed top-0 inset-x-0 bg-[--vegy-dark]/90 backdrop-blur-sm z-10">
-    <div class="max-w-6xl mx-auto px-4 py-4 flex items-center justify-between">
-      <a href="https://vegy.app/" class="text-2xl font-extrabold text-[--vegy-primary]">Vegy</a>
-      <a href="https://calendly.com/hello-vegy/demo" target="_blank" class="px-4 py-2 bg-[--vegy-primary] rounded-lg hover:opacity-90">Book a Demo</a>
+
+<body>
+  <!-- subtle highlights -->
+  <div class="blob" style="top:-300px; left:-260px;"></div>
+  <div class="blob b2" style="top:-280px; right:-260px;"></div>
+
+  <!-- Nav (light, matches white homepage) -->
+  <nav class="fixed top-0 inset-x-0 z-20">
+    <div class="max-w-6xl mx-auto px-4 pt-4">
+      <div class="glass rounded-2xl px-4 md:px-6 py-3 flex items-center justify-between">
+        <a href="https://vegy.app/" class="text-2xl font-extrabold tracking-tight" style="color:var(--vegy-primary)">
+          Vegy
+        </a>
+
+        <a href="https://calendly.com/hello-vegy/demo" target="_blank"
+           class="px-4 py-2 rounded-xl text-white font-semibold transition"
+           style="background:var(--vegy-primary)"
+           onmouseover="this.style.background='var(--vegy-primary-dark)'"
+           onmouseout="this.style.background='var(--vegy-primary)'">
+          Book a Demo
+        </a>
+      </div>
     </div>
   </nav>
 
   <!-- Legal Content -->
-  <section class="hero-bg py-24" style="margin-top: 80px;">
+  <main class="pt-28 pb-16 relative z-10">
     <div class="max-w-6xl mx-auto px-4">
-      <h1 class="text-4xl md:text-6xl font-extrabold leading-tight text-center animate-fade-up">Terms of Use & Privacy Policy</h1>
-      <p class="text-gray-300 text-center max-w-2xl mx-auto mt-4 animate-fade-up" style="animation-delay: .2s">Last updated: September 23, 2025</p>
+      <div class="text-center space-y-3">
+        <h1 class="text-4xl md:text-6xl font-extrabold leading-tight animate-fade-up">
+          Terms of Use & Privacy Policy
+        </h1>
+        <p class="animate-fade-up" style="animation-delay:.15s; color:var(--muted)">
+          Last updated: September 23, 2025
+        </p>
+      </div>
 
-      <div class="grid grid-cols-1 lg:grid-cols-4 gap-6 mt-8">
+      <div class="grid grid-cols-1 lg:grid-cols-4 gap-6 mt-10">
         <!-- Table of Contents -->
         <aside class="lg:sticky lg:top-24 lg:col-span-1">
-          <nav class="bg-[--vegy-dark]/50 border border-white/10 rounded-lg p-4 animate-fade-up" style="animation-delay: .3s">
-            <a href="#terms" class="block text-gray-300 hover:text-white py-1">Terms of Use</a>
-            <a href="#roles" class="block text-gray-300 hover:text-white py-1 pl-4">1. Platform & Instance Roles</a>
-            <a href="#use" class="block text-gray-300 hover:text-white py-1 pl-4">2. Use of the Platform</a>
-            <a href="#billing" class="block text-gray-300 hover:text-white py-1 pl-4">3. Fees & Billing</a>
-            <a href="#qbo" class="block text-gray-300 hover:text-white py-1 pl-4">4. QuickBooks Integration</a>
-            <a href="#availability" class="block text-gray-300 hover:text-white py-1 pl-4">5. Availability & Changes</a>
-            <a href="#liability" class="block text-gray-300 hover:text-white py-1 pl-4">6. Liability</a>
-            <a href="#indemn" class="block text-gray-300 hover:text-white py-1 pl-4">7. Indemnification</a>
-            <a href="#law" class="block text-gray-300 hover:text-white py-1 pl-4">8. Governing Law</a>
-            <div class="h-px bg-white/12 my-4"></div>
-            <a href="#privacy" class="block text-gray-300 hover:text-white py-1">Privacy Policy</a>
-            <a href="#scope" class="block text-gray-300 hover:text-white py-1 pl-4">1. Scope & Roles</a>
-            <a href="#collect" class="block text-gray-300 hover:text-white py-1 pl-4">2. Information We Collect</a>
-            <a href="#useinfo" class="block text-gray-300 hover:text-white py-1 pl-4">3. How We Use Information</a>
-            <a href="#security" class="block text-gray-300 hover:text-white py-1 pl-4">4. Security</a>
-            <a href="#retention" class="block text-gray-300 hover:text-white py-1 pl-4">5. Retention</a>
-            <a href="#rights" class="block text-gray-300 hover:text-white py-1 pl-4">6. Rights</a>
-            <a href="#sharing" class="block text-gray-300 hover:text-white py-1 pl-4">7. Sharing & Vendors</a>
-            <a href="#cookies" class="block text-gray-300 hover:text-white py-1 pl-4">8. Cookies</a>
-            <a href="#intl" class="block text-gray-300 hover:text-white py-1 pl-4">9. International Transfers</a>
-            <a href="#changes" class="block text-gray-300 hover:text-white py-1 pl-4">10. Changes</a>
-            <a href="#contact" class="block text-gray-300 hover:text-white py-1 pl-4">11. Contact</a>
+          <nav class="bg-white border rounded-2xl p-4 animate-fade-up"
+               style="animation-delay:.25s; border-color:var(--border); box-shadow: 0 12px 40px rgba(15,23,42,.08);">
+            <div class="text-xs font-semibold uppercase tracking-wide mb-2" style="color:var(--muted)">
+              Table of contents
+            </div>
+
+            <a href="#terms" class="block py-1 font-semibold hover:underline" style="color:var(--text)">Terms of Use</a>
+            <a href="#roles" class="block py-1 pl-3 hover:underline" style="color:var(--muted)">1. Platform & Instance Roles</a>
+            <a href="#use" class="block py-1 pl-3 hover:underline" style="color:var(--muted)">2. Use of the Platform</a>
+            <a href="#billing" class="block py-1 pl-3 hover:underline" style="color:var(--muted)">3. Fees & Billing</a>
+            <a href="#qbo" class="block py-1 pl-3 hover:underline" style="color:var(--muted)">4. QuickBooks Integration</a>
+            <a href="#availability" class="block py-1 pl-3 hover:underline" style="color:var(--muted)">5. Availability & Changes</a>
+            <a href="#liability" class="block py-1 pl-3 hover:underline" style="color:var(--muted)">6. Liability</a>
+            <a href="#indemn" class="block py-1 pl-3 hover:underline" style="color:var(--muted)">7. Indemnification</a>
+            <a href="#law" class="block py-1 pl-3 hover:underline" style="color:var(--muted)">8. Governing Law</a>
+
+            <div class="h-px my-4" style="background:var(--border)"></div>
+
+            <a href="#privacy" class="block py-1 font-semibold hover:underline" style="color:var(--text)">Privacy Policy</a>
+            <a href="#scope" class="block py-1 pl-3 hover:underline" style="color:var(--muted)">1. Scope & Roles</a>
+            <a href="#collect" class="block py-1 pl-3 hover:underline" style="color:var(--muted)">2. Information We Collect</a>
+            <a href="#useinfo" class="block py-1 pl-3 hover:underline" style="color:var(--muted)">3. How We Use Information</a>
+            <a href="#security" class="block py-1 pl-3 hover:underline" style="color:var(--muted)">4. Security</a>
+            <a href="#retention" class="block py-1 pl-3 hover:underline" style="color:var(--muted)">5. Retention</a>
+            <a href="#rights" class="block py-1 pl-3 hover:underline" style="color:var(--muted)">6. Rights</a>
+            <a href="#sharing" class="block py-1 pl-3 hover:underline" style="color:var(--muted)">7. Sharing & Vendors</a>
+            <a href="#cookies" class="block py-1 pl-3 hover:underline" style="color:var(--muted)">8. Cookies</a>
+            <a href="#intl" class="block py-1 pl-3 hover:underline" style="color:var(--muted)">9. International Transfers</a>
+            <a href="#changes" class="block py-1 pl-3 hover:underline" style="color:var(--muted)">10. Changes</a>
+            <a href="#contact" class="block py-1 pl-3 hover:underline" style="color:var(--muted)">11. Contact</a>
           </nav>
         </aside>
 
         <!-- Legal Content -->
-        <div class="lg:col-span-3 bg-[--vegy-dark]/50 border border-white/10 rounded-lg p-6 animate-fade-up" style="animation-delay: .4s">
-          <h2 id="terms" class="text-2xl font-bold text-[--vegy-primary] mt-0">Vegy Terms of Use</h2>
-          <p class="text-gray-300 leading-relaxed">
-            Vegy LLC (“Vegy”, “we”, “us”) provides a multi-tenant ordering platform (the “Platform”). Each wholesaler operates its own instance (an “Instance”) on a subdomain (e.g., <code class="text-[--vegy-primary] bg-black/25 px-1 rounded">&lt;wholesaler&gt;.vegy.app</code>) and invites buyers (“Instance Users”). By accessing an Instance or the Platform, you agree to these Terms.
+        <section class="lg:col-span-3 bg-white border rounded-2xl p-6 md:p-8 animate-fade-up prose"
+                 style="animation-delay:.35s; border-color:var(--border); box-shadow: 0 12px 40px rgba(15,23,42,.08);">
+
+          <h2 id="terms" class="text-2xl font-bold mt-0" style="color:var(--vegy-primary)">Vegy Terms of Use</h2>
+          <p style="color:var(--muted)">
+            Vegy LLC (“Vegy”, “we”, “us”) provides a multi-tenant ordering platform (the “Platform”). Each wholesaler operates its own instance (an “Instance”) on a subdomain (e.g.,
+            <code>&lt;wholesaler&gt;.vegy.app</code>) and invites buyers (“Instance Users”). By accessing an Instance or the Platform, you agree to these Terms.
           </p>
 
-          <h3 id="roles" class="text-xl font-semibold text-[--vegy-primary] mt-6">1. Platform & Instance Roles</h3>
-          <ul class="text-gray-300 list-disc pl-5 leading-relaxed">
-            <li><strong>Vegy:</strong> provides hosting, DNS/security, storage, email, SMS gateway, and AI parsing.</li>
-            <li><strong>Instance Owner:</strong> controls catalog, pricing, delivery, and QuickBooks integration.</li>
-            <li><strong>Instance Users:</strong> order from the Instance Owner. The contract of sale is between Instance Owner and Instance User.</li>
+          <h3 id="roles" class="text-xl font-semibold mt-8" style="color:var(--vegy-primary)">1. Platform & Instance Roles</h3>
+          <ul style="color:var(--muted)">
+            <li><strong style="color:var(--text)">Vegy:</strong> provides hosting, DNS/security, storage, email, SMS gateway, and AI parsing.</li>
+            <li><strong style="color:var(--text)">Instance Owner:</strong> controls catalog, pricing, delivery, and QuickBooks integration.</li>
+            <li><strong style="color:var(--text)">Instance Users:</strong> order from the Instance Owner. The contract of sale is between Instance Owner and Instance User.</li>
           </ul>
-          <p class="text-gray-300 leading-relaxed"><em>Vegy is a software provider; Vegy is not a party to any sale between an Instance Owner and an Instance User.</em></p>
+          <p style="color:var(--muted)"><em>Vegy is a software provider; Vegy is not a party to any sale between an Instance Owner and an Instance User.</em></p>
 
-          <h3 id="use" class="text-xl font-semibold text-[--vegy-primary] mt-6">2. Use of the Platform</h3>
-          <ul class="text-gray-300 list-disc pl-5 leading-relaxed">
+          <h3 id="use" class="text-xl font-semibold mt-8" style="color:var(--vegy-primary)">2. Use of the Platform</h3>
+          <ul style="color:var(--muted)">
             <li>You must be 18+ and authorized to bind your business.</li>
             <li>Keep logins secure; provide accurate information.</li>
             <li>No unlawful, abusive, or fraudulent activity.</li>
           </ul>
-          <h4 class="text-lg font-medium text-[--vegy-primary] mt-4">2.1 Instance Owner Duties</h4>
-          <ul class="text-gray-300 list-disc pl-5 leading-relaxed">
+
+          <h4 class="text-lg font-semibold mt-6" style="color:var(--vegy-primary)">2.1 Instance Owner Duties</h4>
+          <ul style="color:var(--muted)">
             <li>Maintain accurate catalog, pricing, units, availability, and delivery details.</li>
             <li>Communicate product availability, delivery timelines, and any special handling requirements.</li>
             <li>Manage invites and access for Instance Users.</li>
             <li>Connect and maintain QuickBooks; review invoices created from orders.</li>
             <li>Comply with laws relevant to products offered (e.g., food safety, labeling, construction licensing, etc.).</li>
           </ul>
-          <h4 class="text-lg font-medium text-[--vegy-primary] mt-4">2.2 Instance User Duties</h4>
-          <ul class="text-gray-300 list-disc pl-5 leading-relaxed">
+
+          <h4 class="text-lg font-semibold mt-6" style="color:var(--vegy-primary)">2.2 Instance User Duties</h4>
+          <ul style="color:var(--muted)">
             <li>Order only through your authorized Instance (web or SMS).</li>
             <li>Confirm items, quantities, and delivery details before submitting.</li>
             <li>Pay the Instance Owner according to invoice terms issued from their invoice.</li>
           </ul>
-          <h4 class="text-lg font-medium text-[--vegy-primary] mt-4">2.3 SMS Program Terms</h4>
-          <p class="text-gray-300 leading-relaxed">
-            By providing a mobile number and opting in to texts when registering, you consent to receive transactional SMS from the Instance Owner and/or Vegy on their behalf. Message &amp; data rates may apply. Frequency varies. Reply <strong>STOP</strong> to cancel, <strong>HELP</strong> for help. Carriers are not liable for delayed or undelivered messages.
-            <!-- tiny 10DLC disclaimer appended -->
+
+          <h4 class="text-lg font-semibold mt-6" style="color:var(--vegy-primary)">2.3 SMS Program Terms</h4>
+          <p style="color:var(--muted)">
+            By providing a mobile number and opting in to texts when registering, you consent to receive transactional SMS from the Instance Owner and/or Vegy on their behalf. Message &amp; data rates may apply. Frequency varies. Reply <strong style="color:var(--text)">STOP</strong> to cancel, <strong style="color:var(--text)">HELP</strong> for help. Carriers are not liable for delayed or undelivered messages.
             Opt-in occurs via the Instance’s sign-up/phone field; consent is not a condition of purchase.
           </p>
 
-          <h3 id="billing" class="text-xl font-semibold text-[--vegy-primary] mt-6">3. Fees & Billing</h3>
-          <p class="text-gray-300 leading-relaxed">Vegy may charge Instance Owners platform fees. Unless otherwise agreed, fees are invoiced by Vegy and payable per invoice terms. Non-payment may lead to suspension.</p>
+          <h3 id="billing" class="text-xl font-semibold mt-8" style="color:var(--vegy-primary)">3. Fees & Billing</h3>
+          <p style="color:var(--muted)">
+            Vegy may charge Instance Owners platform fees. Unless otherwise agreed, fees are invoiced by Vegy and payable per invoice terms. Non-payment may lead to suspension.
+          </p>
 
-          <h3 id="qbo" class="text-xl font-semibold text-[--vegy-primary] mt-6">4. QuickBooks Integration</h3>
-          <p class="text-gray-300 leading-relaxed">Instance Owners connect their QuickBooks Online company. Vegy may create or update Customers, Items, and Invoices. Vegy does not post journal entries, recognize revenue, or reconcile payments. Instance owners can connect their Quickbooks account to third party providers for inventory management, delivery tracking, connecting to other bookkeeping solutions or ERPs and more through third party tools such as Zapier, Vegy is not liable for this process.</p>
+          <h3 id="qbo" class="text-xl font-semibold mt-8" style="color:var(--vegy-primary)">4. QuickBooks Integration</h3>
+          <p style="color:var(--muted)">
+            Instance Owners connect their QuickBooks Online company. Vegy may create or update Customers, Items, and Invoices. Vegy does not post journal entries, recognize revenue, or reconcile payments. Instance owners can connect their Quickbooks account to third party providers for inventory management, delivery tracking, connecting to other bookkeeping solutions or ERPs and more through third party tools such as Zapier, Vegy is not liable for this process.
+          </p>
 
-          <h3 id="availability" class="text-xl font-semibold text-[--vegy-primary] mt-6">5. Availability & Changes</h3>
-          <p class="text-gray-300 leading-relaxed">We strive for uptime but outages may occur. Features may change for security or improvement.</p>
+          <h3 id="availability" class="text-xl font-semibold mt-8" style="color:var(--vegy-primary)">5. Availability & Changes</h3>
+          <p style="color:var(--muted)">
+            We strive for uptime but outages may occur. Features may change for security or improvement.
+          </p>
 
-          <h3 id="liability" class="text-xl font-semibold text-[--vegy-primary] mt-6">6. Disclaimers & Limits of Liability</h3>
-          <p class="text-gray-300 leading-relaxed">THE PLATFORM IS PROVIDED “AS IS.” VEGY IS NOT LIABLE FOR indirect or consequential damages, catalog errors, order disputes, interruptions, QuickBooks API errors, or unauthorized access. Liability is capped at fees paid to Vegy in the prior 3 months.</p>
+          <h3 id="liability" class="text-xl font-semibold mt-8" style="color:var(--vegy-primary)">6. Disclaimers & Limits of Liability</h3>
+          <p style="color:var(--muted)">
+            THE PLATFORM IS PROVIDED “AS IS.” VEGY IS NOT LIABLE FOR indirect or consequential damages, catalog errors, order disputes, interruptions, QuickBooks API errors, or unauthorized access. Liability is capped at fees paid to Vegy in the prior 3 months.
+          </p>
 
-          <h3 id="indemn" class="text-xl font-semibold text-[--vegy-primary] mt-6">7. Indemnification</h3>
-          <p class="text-gray-300 leading-relaxed">You indemnify Vegy for claims arising from your use. Instance Owners further indemnify for their Instance content, order handling, and QuickBooks postings.</p>
+          <h3 id="indemn" class="text-xl font-semibold mt-8" style="color:var(--vegy-primary)">7. Indemnification</h3>
+          <p style="color:var(--muted)">
+            You indemnify Vegy for claims arising from your use. Instance Owners further indemnify for their Instance content, order handling, and QuickBooks postings.
+          </p>
 
-          <h3 id="law" class="text-xl font-semibold text-[--vegy-primary] mt-6">8. Governing Law</h3>
-          <p class="text-gray-300 leading-relaxed">Florida law governs. Venue: courts in Broward County, Florida.</p>
+          <h3 id="law" class="text-xl font-semibold mt-8" style="color:var(--vegy-primary)">8. Governing Law</h3>
+          <p style="color:var(--muted)">
+            Florida law governs. Venue: courts in Broward County, Florida.
+          </p>
 
-          <div class="h-px bg-white/12 my-6"></div>
+          <div class="h-px my-10" style="background:var(--border)"></div>
 
-          <h2 id="privacy" class="text-2xl font-bold text-[--vegy-primary] mt-0">Vegy Privacy Policy</h2>
+          <h2 id="privacy" class="text-2xl font-bold mt-0" style="color:var(--vegy-primary)">Vegy Privacy Policy</h2>
 
-          <h3 id="scope" class="text-xl font-semibold text-[--vegy-primary] mt-6">1. Scope & Roles</h3>
-          <p class="text-gray-300 leading-relaxed">Instance Owners are controllers for Instance data; Vegy acts as a processor. Vegy may be controller for platform-level operations.</p>
-          <p class="text-gray-300 leading-relaxed">The Platform is not directed to anyone under 18, and we do not knowingly collect their data.</p>
+          <h3 id="scope" class="text-xl font-semibold mt-8" style="color:var(--vegy-primary)">1. Scope & Roles</h3>
+          <p style="color:var(--muted)">
+            Instance Owners are controllers for Instance data; Vegy acts as a processor. Vegy may be controller for platform-level operations.
+          </p>
+          <p style="color:var(--muted)">
+            The Platform is not directed to anyone under 18, and we do not knowingly collect their data.
+          </p>
 
-          <h3 id="collect" class="text-xl font-semibold text-[--vegy-primary] mt-6">2. Information We Collect</h3>
-          <ul class="text-gray-300 list-disc pl-5 leading-relaxed">
+          <h3 id="collect" class="text-xl font-semibold mt-8" style="color:var(--vegy-primary)">2. Information We Collect</h3>
+          <ul style="color:var(--muted)">
             <li>Account data: email, names, business details, phone, addresses, password hashes.</li>
             <li>Order data: items, quantities, prices, delivery info, SMS order texts.</li>
             <li>Integration data: QuickBooks tokens/realm IDs.</li>
@@ -140,8 +246,8 @@
             <li>Support requests.</li>
           </ul>
 
-          <h3 id="useinfo" class="text-xl font-semibold text-[--vegy-primary] mt-6">3. How We Use Information</h3>
-          <ul class="text-gray-300 list-disc pl-5 leading-relaxed">
+          <h3 id="useinfo" class="text-xl font-semibold mt-8" style="color:var(--vegy-primary)">3. How We Use Information</h3>
+          <ul style="color:var(--muted)">
             <li>Operate Instances and authenticate users.</li>
             <li>Create/update QuickBooks or records for Instance Owners.</li>
             <li>Process SMS orders (Telnyx/OpenAI).</li>
@@ -149,21 +255,29 @@
             <li>Host/store data (Heroku, MongoDB, Uploadcare, Cloudflare).</li>
             <li>Support and troubleshooting.</li>
           </ul>
-          <p class="text-gray-300 leading-relaxed">Vegy does not process card payments.</p>
-          <p class="text-gray-300 leading-relaxed">Legal bases (if applicable): contract performance, legitimate interests (security/support), consent (SMS).</p>
+          <p style="color:var(--muted)">Vegy does not process card payments.</p>
+          <p style="color:var(--muted)">Legal bases (if applicable): contract performance, legitimate interests (security/support), consent (SMS).</p>
 
-          <h3 id="security" class="text-xl font-semibold text-[--vegy-primary] mt-6">4. Security</h3>
-          <p class="text-gray-300 leading-relaxed">We use TLS, bcrypt, scoped API keys, sessions, CSRF protections, least-privilege access, and vendor security. No method is 100% secure.</p>
+          <h3 id="security" class="text-xl font-semibold mt-8" style="color:var(--vegy-primary)">4. Security</h3>
+          <p style="color:var(--muted)">
+            We use TLS, bcrypt, scoped API keys, sessions, CSRF protections, least-privilege access, and vendor security. No method is 100% secure.
+          </p>
 
-          <h3 id="retention" class="text-xl font-semibold text-[--vegy-primary] mt-6">5. Retention</h3>
-          <p class="text-gray-300 leading-relaxed">We keep data while an Instance is active or as required by law. Sessions/CSRF expire per config. After deactivation, limited data retained 30–90 days for compliance/backups.</p>
+          <h3 id="retention" class="text-xl font-semibold mt-8" style="color:var(--vegy-primary)">5. Retention</h3>
+          <p style="color:var(--muted)">
+            We keep data while an Instance is active or as required by law. Sessions/CSRF expire per config. After deactivation, limited data retained 30–90 days for compliance/backups.
+          </p>
 
-          <h3 id="rights" class="text-xl font-semibold text-[--vegy-primary] mt-6">6. Rights</h3>
-          <p class="text-gray-300 leading-relaxed">You may access, correct, or delete your data. Instance Users should contact their Instance Owner; Instance Owners may contact Vegy (<a href="mailto:hello@vegy.app" class="text-[--vegy-primary] hover:underline">hello@vegy.app</a>). We may verify identity before fulfilling requests.</p>
+          <h3 id="rights" class="text-xl font-semibold mt-8" style="color:var(--vegy-primary)">6. Rights</h3>
+          <p style="color:var(--muted)">
+            You may access, correct, or delete your data. Instance Users should contact their Instance Owner; Instance Owners may contact Vegy
+            (<a href="mailto:hello@vegy.app" class="hover:underline" style="color:var(--vegy-primary)">hello@vegy.app</a>).
+            We may verify identity before fulfilling requests.
+          </p>
 
-          <h3 id="sharing" class="text-xl font-semibold text-[--vegy-primary] mt-6">7. Sharing & Vendors</h3>
-          <p class="text-gray-300 leading-relaxed">We share data with providers (subject to their policies):</p>
-          <ul class="text-gray-300 list-disc pl-5 leading-relaxed">
+          <h3 id="sharing" class="text-xl font-semibold mt-8" style="color:var(--vegy-primary)">7. Sharing & Vendors</h3>
+          <p style="color:var(--muted)">We share data with providers (subject to their policies):</p>
+          <ul style="color:var(--muted)">
             <li>Intuit QuickBooks Online (invoicing and item management)</li>
             <li>Telnyx (SMS)</li>
             <li>OpenAI (parsing)</li>
@@ -173,28 +287,43 @@
             <li>Mailjet (email)</li>
             <li>Cloudflare (security)</li>
           </ul>
-          <p class="text-gray-300 leading-relaxed">We do not sell or share data for advertising.</p>
+          <p style="color:var(--muted)">We do not sell or share data for advertising.</p>
 
-          <h3 id="cookies" class="text-xl font-semibold text-[--vegy-primary] mt-6">8. Cookies</h3>
-          <p class="text-gray-300 leading-relaxed">We use session cookies and CSRF tokens. Cloudflare may set cookies for security. No ad trackers.</p>
+          <h3 id="cookies" class="text-xl font-semibold mt-8" style="color:var(--vegy-primary)">8. Cookies</h3>
+          <p style="color:var(--muted)">
+            We use session cookies and CSRF tokens. Cloudflare may set cookies for security. No ad trackers.
+          </p>
 
-          <h3 id="intl" class="text-xl font-semibold text-[--vegy-primary] mt-6">9. International Transfers</h3>
-          <p class="text-gray-300 leading-relaxed">Data may be processed in the US only.</p>
+          <h3 id="intl" class="text-xl font-semibold mt-8" style="color:var(--vegy-primary)">9. International Transfers</h3>
+          <p style="color:var(--muted)">Data may be processed in the US only.</p>
 
-          <h3 id="changes" class="text-xl font-semibold text-[--vegy-primary] mt-6">10. Changes</h3>
-          <p class="text-gray-300 leading-relaxed">We may update this policy. Material changes posted here and possibly emailed/SMS’d.</p>
+          <h3 id="changes" class="text-xl font-semibold mt-8" style="color:var(--vegy-primary)">10. Changes</h3>
+          <p style="color:var(--muted)">
+            We may update this policy. Material changes posted here and possibly emailed/SMS’d.
+          </p>
 
-          <h3 id="contact" class="text-xl font-semibold text-[--vegy-primary] mt-6">11. Contact</h3>
-          <p class="text-gray-300 leading-relaxed">Vegy LLC<br>Phone: (954) 953-1901<br>Email: <a href="mailto:hello@vegy.app" class="text-[--vegy-primary] hover:underline">hello@vegy.app</a></p>
-        </div>
+          <h3 id="contact" class="text-xl font-semibold mt-8" style="color:var(--vegy-primary)">11. Contact</h3>
+          <p style="color:var(--muted)">
+            Vegy LLC<br>
+            Phone: (954) 953-1901<br>
+            Email:
+            <a href="mailto:hello@vegy.app" class="hover:underline" style="color:var(--vegy-primary)">hello@vegy.app</a>
+          </p>
+
+        </section>
       </div>
     </div>
-  </section>
+  </main>
 
-  <!-- Footer -->
-  <footer class="py-6 bg-[--vegy-dark] text-gray-400 text-center">
+  <!-- Footer (light, matches white homepage) -->
+  <footer class="py-8 relative z-10">
     <div class="max-w-6xl mx-auto px-4">
-      <p>© <span id="year"></span> <a href="https://vegy.app/" class="text-[--vegy-primary] hover:underline">Vegy</a> • <a href="https://vegy.app/legal.html" class="text-[--vegy-primary] hover:underline">Terms & Privacy</a> • <a href="https://vegy.app/support.html" class="text-[--vegy-primary] hover:underline">Contact</a></p>
+      <div class="text-center text-sm" style="color:var(--muted)">
+        © <span id="year"></span>
+        <a href="https://vegy.app/" class="hover:underline" style="color:var(--vegy-primary)">Vegy</a>
+        • <a href="https://vegy.app/legal.html" class="hover:underline">Terms & Privacy</a>
+        • <a href="https://vegy.app/support.html" class="hover:underline">Contact</a>
+      </div>
     </div>
   </footer>
 
@@ -203,4 +332,3 @@
   </script>
 </body>
 </html>
-
