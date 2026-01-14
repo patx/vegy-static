@@ -9,104 +9,99 @@
 
   <style>
     :root{
-      --vegy-primary:#14b8a6;
-      --vegy-dark:#0b1220;
+      /* PROFESSIONAL TEAL (mature, not “mint”) */
+      --vegy-primary:#0f766e;       /* teal-700 */
+      --vegy-primary-dark:#115e59;  /* teal-800 */
+      --vegy-primary-soft: rgba(15,118,110,.10);
 
-      /* glass tokens */
-      --glass: rgba(255,255,255,.08);
-      --glass-2: rgba(255,255,255,.12);
-      --shadow: 0 24px 70px rgba(0,0,0,.35);
+      /* professional neutrals */
+      --bg:#f8fafc;          /* slate-50 */
+      --card:#ffffff;
+      --text:#0f172a;        /* slate-900 */
+      --muted:#64748b;       /* slate-500 */
+      --border:rgba(15,23,42,.08);
+
+      /* glass */
+      --glass: rgba(255,255,255,.78);
+      --glass-soft: rgba(255,255,255,.62);
+      --shadow: 0 20px 60px rgba(15,23,42,.12);
     }
 
     html, body { height: 100%; }
     body {
       font-family: "Poppins", system-ui, -apple-system, Segoe UI, Roboto, sans-serif;
-      scroll-behavior: smooth;
-
-      /* no gradients: flat dark + subtle highlights */
-      background: var(--vegy-dark);
-      color: #fff;
+      background: var(--bg);
+      color: var(--text);
       overflow-x: hidden;
     }
 
-    /* subtle “liquid” highlights without gradients */
+    /* subtle highlights (teal + neutral) */
     .blob {
       position: absolute;
       width: 720px;
       height: 720px;
       border-radius: 9999px;
-      filter: blur(60px);
-      opacity: .22;
-      background: rgba(20,184,166,.55);
+      filter: blur(110px);
+      opacity: .14;
+      background: rgba(15,118,110,.28);
       pointer-events: none;
-      transform: translateZ(0);
     }
     .blob.b2{
-      width: 620px;
-      height: 620px;
-      opacity: .16;
-      background: rgba(56,189,248,.55);
+      width: 600px;
+      height: 600px;
+      opacity: .10;
+      background: rgba(2,132,199,.20); /* tiny cool tint for depth */
     }
 
-    /* iOS-like glass (no borders) */
+    /* glass */
     .glass {
-      background: rgba(255,255,255,.08);
+      background: var(--glass);
+      backdrop-filter: blur(18px) saturate(160%);
+      -webkit-backdrop-filter: blur(18px) saturate(160%);
       box-shadow: var(--shadow);
-      backdrop-filter: blur(18px) saturate(150%);
-      -webkit-backdrop-filter: blur(18px) saturate(150%);
-    }
-    .glass-soft {
-      background: rgba(255,255,255,.06);
-      backdrop-filter: blur(14px) saturate(150%);
-      -webkit-backdrop-filter: blur(14px) saturate(150%);
     }
 
-    /* subtle grain */
-    .grain {
-      position: fixed;
-      inset: 0;
-      pointer-events: none;
-      opacity: .06;
-      mix-blend-mode: overlay;
-      background-image:
-        url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='220' height='220'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='220' height='220' filter='url(%23n)' opacity='.6'/%3E%3C/svg%3E");
-      background-size: 220px 220px;
-      z-index: 1;
+    /* animation */
+    .animate-fade-up { animation: fadeUp .7s cubic-bezier(.2,.8,.2,1) both; }
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(12px); }
+      to { opacity: 1; transform: translateY(0); }
     }
-
-    /* animations */
-    .animate-fade-up { animation: fadeUp .75s cubic-bezier(.2,.8,.2,1) both; }
-    @keyframes fadeUp { from { opacity: 0; transform: translateY(14px); } to { opacity: 1; transform: translateY(0); } }
     .floaty { animation: floaty 6s ease-in-out infinite; }
-    @keyframes floaty { 0%,100%{ transform: translateY(0); } 50%{ transform: translateY(-8px); } }
+    @keyframes floaty {
+      0%,100%{ transform: translateY(0); }
+      50%{ transform: translateY(-8px); }
+    }
 
     a:focus-visible, button:focus-visible {
-      outline: 2px solid rgba(20,184,166,.9);
+      outline: 2px solid var(--vegy-primary);
       outline-offset: 3px;
-      border-radius: 14px;
+      border-radius: 12px;
     }
   </style>
 </head>
 
 <body>
-  <div class="grain"></div>
 
   <!-- subtle highlights -->
-  <div class="blob" style="top:-260px; left:-260px;"></div>
-  <div class="blob b2" style="top:-240px; right:-260px;"></div>
+  <div class="blob" style="top:-280px; left:-260px;"></div>
+  <div class="blob b2" style="top:-260px; right:-260px;"></div>
 
   <!-- Nav -->
   <nav class="fixed top-0 inset-x-0 z-20">
     <div class="max-w-6xl mx-auto px-4 pt-4">
       <div class="glass rounded-2xl px-4 md:px-6 py-3 flex items-center justify-between">
-        <a href="https://vegy.app/" class="text-2xl font-extrabold tracking-tight text-[--vegy-primary]">Vegy</a>
+        <a href="https://vegy.app/" class="text-2xl font-extrabold tracking-tight" style="color:var(--vegy-primary)">
+          Vegy
+        </a>
 
-        <div class="flex items-center gap-2">
-          <a href="https://calendly.com/hello-vegy/demo" target="_blank"
-             class="px-4 py-2 rounded-xl bg-[--vegy-primary] text-[--vegy-dark] font-semibold hover:opacity-90 transition">
-            Book a Demo
-          </a>
-        </div>
+        <a href="https://calendly.com/hello-vegy/demo" target="_blank"
+           class="px-4 py-2 rounded-xl text-white font-semibold transition"
+           style="background:var(--vegy-primary)"
+           onmouseover="this.style.background='var(--vegy-primary-dark)'"
+           onmouseout="this.style.background='var(--vegy-primary)'">
+          Book a Demo
+        </a>
       </div>
     </div>
   </nav>
@@ -114,67 +109,79 @@
   <!-- Hero -->
   <section class="min-h-screen flex items-center justify-center pt-28 pb-16 relative z-10">
     <div class="max-w-6xl mx-auto px-4">
-      <div class="grid grid-cols-1 lg:grid-cols-12 gap-10 items-center">
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+
         <!-- Copy -->
         <div class="lg:col-span-6 space-y-6">
-
-          <h1 class="text-4xl md:text-6xl font-extrabold leading-tight tracking-tight animate-fade-up" style="animation-delay:.05s">
-            Your wholesale ordering app,
-            <span class="text-[--vegy-primary]">built to sell more.</span>
+          <h1 class="text-4xl md:text-6xl font-extrabold leading-tight tracking-tight animate-fade-up">
+            Wholesale ordering,
+            <span style="color:var(--vegy-primary)">done right.</span>
           </h1>
 
-          <p class="text-white/70 text-lg md:text-xl max-w-xl animate-fade-up" style="animation-delay:.12s">
-            Invite your customers into a fully white-labeled ordering experience that is made for your business.
+          <p class="text-lg md:text-xl max-w-xl animate-fade-up" style="animation-delay:.1s; color:var(--muted)">
+            A professional, white-labeled ordering platform built for real wholesale businesses.
           </p>
 
-          <div class="flex flex-col sm:flex-row gap-3 animate-fade-up" style="animation-delay:.18s">
+          <div class="animate-fade-up" style="animation-delay:.15s">
             <a href="https://calendly.com/hello-vegy/demo" target="_blank"
-               class="px-6 py-3 rounded-2xl bg-[--vegy-primary] text-[--vegy-dark] font-semibold hover:opacity-90 transition text-center">
-              Book your live demo
+               class="inline-block px-6 py-3 rounded-2xl text-white font-semibold transition"
+               style="background:var(--vegy-primary)"
+               onmouseover="this.style.background='var(--vegy-primary-dark)'"
+               onmouseout="this.style.background='var(--vegy-primary)'">
+              See your catalog live, book a demo today
             </a>
           </div>
 
-          <div class="pt-2 space-y-3 animate-fade-up" style="animation-delay:.25s">
-            <div class="rounded-2xl p-4">
-              <div class="text-sm font-semibold">Accecpt orders anytime, and anyhow</div>
-              <div class="text-sm text-white/70 mt-1">Let customers order via your own website, mobile, iOS/Android apps, or AI-powered text messaging. Reorders take seconds.</div>
+          <!-- Feature list (OG copy) -->
+          <div class="pt-4 space-y-4 animate-fade-up" style="animation-delay:.2s">
+            <div class="p-4 rounded-2xl bg-white shadow-sm">
+              <div class="font-semibold text-sm">Accept orders anytime, and anyhow</div>
+              <div class="text-sm mt-1" style="color:var(--muted)">
+                Let customers order via your own website, mobile, iOS/Android apps, or AI-powered text messaging. Reorders take seconds.
+              </div>
             </div>
-            <div class="rounded-2xl p-4">
-              <div class="text-sm font-semibold">Maximize margins and order size</div>
-              <div class="text-sm text-white/70 mt-1">Set customer-specific pricing tiers and order minimums, promote featured items, and push new products to increase order size and profit.</div>
+
+            <div class="p-4 rounded-2xl bg-white shadow-sm">
+              <div class="font-semibold text-sm">Maximize margins and order size</div>
+              <div class="text-sm mt-1" style="color:var(--muted)">
+                Set customer-specific pricing tiers and order minimums, promote featured items, and push new products to increase order size and profit.
+              </div>
             </div>
-            <div class="rounded-2xl p-4">
-              <div class="text-sm font-semibold">Integrates with your workflow</div>
-              <div class="text-sm text-white/70 mt-1">Sync with QuickBooks <span class="text-white/50">or</span> your existing ERP for invoicing, payments, inventory, and delivery tracking. Export sales reports, pull slips, and price lists instantly.</div>
+
+            <div class="p-4 rounded-2xl bg-white shadow-sm">
+              <div class="font-semibold text-sm">Integrates with your workflow</div>
+              <div class="text-sm mt-1" style="color:var(--muted)">
+                Sync with QuickBooks or your existing ERP for invoicing, payments, inventory, and delivery tracking. Export sales reports, pull slips, and price lists instantly.
+              </div>
             </div>
           </div>
         </div>
 
         <!-- Device -->
         <div class="lg:col-span-6">
-          <div class="p-5 md:p-6 floaty">
+          <div class="floaty">
             <div class="mx-auto max-w-md">
               <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 406 852" class="w-full h-auto">
-                <image href="https://raw.githubusercontent.com/patx/vegy-static/refs/heads/main/screenshots/order.png" x="-43" y="25" width="500" height="800" preserveAspectRatio="xMidYMid meet"></image>
-                <image href="https://ordertaker.us/wp-content/plugins/bdthemes-element-pack/assets/images/devices/iphonex.svg" x="0" y="0" width="415" height="852" />
+                <image href="https://raw.githubusercontent.com/patx/vegy-static/refs/heads/main/screenshots/order.png"
+                       x="-43" y="25" width="500" height="800" />
+                <image href="https://ordertaker.us/wp-content/plugins/bdthemes-element-pack/assets/images/devices/iphonex.svg"
+                       x="0" y="0" width="415" height="852" />
               </svg>
             </div>
+          </div>
         </div>
+
       </div>
     </div>
   </section>
 
   <!-- Footer -->
-  <footer class="py-8 relative z-10">
-    <div class="max-w-6xl mx-auto px-4">
-      <div class="rounded-2xl px-6 py-5 text-center text-white/60">
-        <p>
-          © <span id="year"></span>
-          <a href="https://vegy.app/" class="text-[--vegy-primary] hover:underline">Vegy</a>
-          • <a href="https://vegy.app/legal.html" class="text-[--vegy-primary] hover:underline">Terms & Privacy</a>
-          • <a href="https://vegy.app/support.html" class="text-[--vegy-primary] hover:underline">Contact</a>
-        </p>
-      </div>
+  <footer class="py-8">
+    <div class="max-w-6xl mx-auto px-4 text-center text-sm" style="color:var(--muted)">
+      © <span id="year"></span>
+      <a href="https://vegy.app/" style="color:var(--vegy-primary)" class="hover:underline">Vegy</a>
+      • <a href="https://vegy.app/legal.html" class="hover:underline">Terms & Privacy</a>
+      • <a href="https://vegy.app/support.html" class="hover:underline">Contact</a>
     </div>
   </footer>
 
