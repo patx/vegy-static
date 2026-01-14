@@ -1,20 +1,20 @@
 {
-  "short_name": "Vegy",
-  "name": "Vegy Online Ordering",
+  "short_name": "invos",
+  "name": "invos: Invoice Smarter",
   "icons": [
     {
-      "src": "https://raw.githubusercontent.com/patx/vegy-static/refs/heads/main/demo/icon192.png",
+      "src": "https://raw.githubusercontent.com/patx/vegy-static/refs/heads/main/invos/icon192.png",
       "sizes": "192x192",
       "type": "image/png"
     },
     {
-      "src": "https://raw.githubusercontent.com/patx/vegy-static/refs/heads/main/demo/icon512.png",
+      "src": "https://raw.githubusercontent.com/patx/vegy-static/refs/heads/main/invos/icon512.png",
       "sizes": "512x512",
       "type": "image/png"
     }
   ],
   "categories": ["productivity"],
-  "start_url": "https://demo.vegy.app/",
+  "start_url": "https://invos.app/",
   "display": "standalone",
   "orientation": "portrait-primary",
   "theme_color": "#f8f9fa",
