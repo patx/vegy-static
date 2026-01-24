@@ -1,6 +1,7 @@
 {
   "short_name": "invos",
   "name": "invos: Invoice Smarter",
+  "description": "Create simple invoices and quotes fast, track expenses and payments, and manage your business in one simple app. Free to sign up. Unlimited invoicing for $1.99/month.",
   "icons": [
     {
       "src": "https://raw.githubusercontent.com/patx/vegy-static/refs/heads/main/invos/icon192.png",
@@ -13,8 +14,34 @@
       "type": "image/png"
     }
   ],
-  "categories": ["productivity"],
-  "start_url": "https://invos.app/",
+  "screenshots": [
+    {
+      "src": "https://raw.githubusercontent.com/patx/static/refs/heads/main/invos/invoice_pdf.png",
+      "sizes": "1080x1920",
+      "type": "image/png",
+      "form_factor": "narrow"
+    },
+    {
+      "src": "https://raw.githubusercontent.com/patx/static/refs/heads/main/invos/invoices.png",
+      "sizes": "1080x1920",
+      "type": "image/png",
+      "form_factor": "narrow"
+    },
+    {
+      "src": "https://raw.githubusercontent.com/patx/static/refs/heads/main/invos/client.png",
+      "sizes": "1080x1920",
+      "type": "image/png",
+      "form_factor": "narrow"
+    },
+    {
+      "src": "https://raw.githubusercontent.com/patx/static/refs/heads/main/invos/books.png",
+      "sizes": "1080x1920",
+      "type": "image/png",
+      "form_factor": "narrow"
+    }
+  ],
+  "categories": ["productivity", "business"],
+  "start_url": "https://invos.app/splash",
   "display": "standalone",
   "orientation": "portrait-primary",
   "theme_color": "#f8f9fa",
